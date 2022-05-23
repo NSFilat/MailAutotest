@@ -3,7 +3,6 @@ package seleniumTests;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -31,6 +30,7 @@ public class BaseDriverTest {
                     e.printStackTrace();
                 }
                 driver = new RemoteWebDriver(hub, options);
+                driver.manage().window().maximize();
 
                 // Запуск на браузера на втором мониторе
                 // driver.manage().window().setPosition(new Point(3000, 0));
