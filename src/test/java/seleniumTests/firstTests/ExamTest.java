@@ -69,8 +69,7 @@ public class ExamTest extends BaseDriverTest {
         mmpo.assertInMessageThemeText(firstTheme);
         mmpo.assertMessageText(firstMessageText);
         mmpo.moveToViewAttachmentLink();
-        mmpo.assertAttachmentNameText(filePath.substring(filePath.lastIndexOf('\\') + 1).
-                substring(filePath.lastIndexOf('/') + 1));
+        mmpo.assertAttachmentNameText(filePath.substring(filePath.lastIndexOf('\\') + 1));
         mmpo.moveToDownloadAttachmentLink();
         mmpo.clickDownloadAttachmentLink();
 
@@ -80,8 +79,7 @@ public class ExamTest extends BaseDriverTest {
         cpo.clickFromMailButton();
         cpo.clickExpandMessageButton();
         cpo.clickIncomingMessageButton();
-        cpo.assertFileNameText(filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.lastIndexOf('.')).
-                substring(filePath.lastIndexOf('/') + 1));
+        cpo.assertFileNameText(filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.lastIndexOf('.')));
         cpo.closeWindow();
 
         //переход в настройки, установка новой подписи
