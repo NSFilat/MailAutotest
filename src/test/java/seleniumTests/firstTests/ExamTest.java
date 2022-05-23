@@ -8,6 +8,9 @@ import pageObject.MailSettingsPageObject;
 import seleniumTests.BaseDriverTest;
 import utils.PropertyLoader;
 
+import java.io.File;
+import java.net.URL;
+
 public class ExamTest extends BaseDriverTest {
 
     public static String mailKey = System.getProperty("MailKey");
@@ -25,7 +28,7 @@ public class ExamTest extends BaseDriverTest {
     final String sign = "С уважением,\n" +
             "Тест Тестов";
 
-    public String filePath = "C:\\Autotests\\Data\\java.jpg";
+    public String filePath = new File(getClass().getClassLoader().getResource("java.jpg").getFile()).getAbsolutePath();
 
     @Test
     public void startTest() {
