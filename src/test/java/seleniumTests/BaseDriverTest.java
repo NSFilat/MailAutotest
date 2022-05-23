@@ -31,6 +31,7 @@ public class BaseDriverTest {
                     e.printStackTrace();
                 }
                 driver = new RemoteWebDriver(hub, options);
+                driver.manage().window().maximize();
 
                 // Запуск на браузера на втором мониторе
                 // driver.manage().window().setPosition(new Point(3000, 0));
