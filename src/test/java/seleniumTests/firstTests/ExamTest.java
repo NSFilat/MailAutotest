@@ -9,6 +9,7 @@ import seleniumTests.BaseDriverTest;
 import utils.PropertyLoader;
 
 import java.io.File;
+import java.io.InputStream;
 import java.net.URL;
 
 public class ExamTest extends BaseDriverTest {
@@ -19,16 +20,16 @@ public class ExamTest extends BaseDriverTest {
     final String USERNAME = "test.testov.qa@mail.ru";
     final String PASSWORD = "PassForMail";
 
-    final String firstTheme = "Первая тема";
-    final String secondTheme = "Вторая тема";
+    public String firstTheme = "Первая тема";
+    public String secondTheme = "Вторая тема";
 
-    final String firstMessageText = "Сообщение вернётся через некоторое время...";
-    final String secondMessageText = "Сообщение вернётся через некоторое время...";
+    public String firstMessageText = "Сообщение вернётся через некоторое время...";
+    public String secondMessageText = "Это тоже скоро придёт...";
 
-    final String sign = "С уважением,\n" +
+    public String sign = "С уважением,\n" +
             "Тест Тестов";
 
-    public String filePath = new File(getClass().getClassLoader().getResource("java.jpg").getFile()).getAbsolutePath();
+    public File file = new File(getClass().getClassLoader().getResource("java.jpg").getFile());
 
     @Test
     public void startTest() {
@@ -53,7 +54,9 @@ public class ExamTest extends BaseDriverTest {
         mmpo.setTargetMailInput(USERNAME);
         mmpo.setThemeInput(firstTheme);
         mmpo.setMessageInput(firstMessageText);
-        mmpo.uploadFileInput(filePath);
+
+
+        mmpo.uploadFileInput(file.getPath());
         mmpo.getCounterMessageText();
         mmpo.clickSendButton();
         mmpo.clickCloseNotificationPopup();
@@ -69,8 +72,7 @@ public class ExamTest extends BaseDriverTest {
         mmpo.assertInMessageThemeText(firstTheme);
         mmpo.assertMessageText(firstMessageText);
         mmpo.moveToViewAttachmentLink();
-        mmpo.assertAttachmentNameText(filePath.substring(filePath.lastIndexOf('\\') + 1).
-                substring(filePath.lastIndexOf('/') + 1));
+        mmpo.assertAttachmentNameText(file.getName());
         mmpo.moveToDownloadAttachmentLink();
         mmpo.clickDownloadAttachmentLink();
 
@@ -80,8 +82,7 @@ public class ExamTest extends BaseDriverTest {
         cpo.clickFromMailButton();
         cpo.clickExpandMessageButton();
         cpo.clickIncomingMessageButton();
-        cpo.assertFileNameText(filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.lastIndexOf('.')).
-                substring(filePath.lastIndexOf('/') + 1));
+        cpo.assertFileNameText(file.getName().replaceAll("[.].*", ""));
         cpo.closeWindow();
 
         //переход в настройки, установка новой подписи
