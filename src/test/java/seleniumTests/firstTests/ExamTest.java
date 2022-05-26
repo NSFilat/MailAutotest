@@ -15,7 +15,7 @@ public class ExamTest extends BaseDriverTest {
     public static String mailKey = System.getProperty("MailKey");
     public static String mailURL = PropertyLoader.loadProperty(mailKey);
 
-    final String USERNAME = "qa.test.testov@mail.ru";
+    final String USERNAME = "test.q.testov@mail.ru";
     final String PASSWORD = "PassForMail";
 
     public String firstTheme = "Первая тема";
