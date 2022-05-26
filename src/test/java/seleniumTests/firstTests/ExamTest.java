@@ -9,15 +9,13 @@ import seleniumTests.BaseDriverTest;
 import utils.PropertyLoader;
 
 import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 
 public class ExamTest extends BaseDriverTest {
 
     public static String mailKey = System.getProperty("MailKey");
     public static String mailURL = PropertyLoader.loadProperty(mailKey);
 
-    final String USERNAME = "test.testov.qa@mail.ru";
+    final String USERNAME = "qa.test.testov@mail.ru";
     final String PASSWORD = "PassForMail";
 
     public String firstTheme = "Первая тема";
@@ -54,8 +52,6 @@ public class ExamTest extends BaseDriverTest {
         mmpo.setTargetMailInput(USERNAME);
         mmpo.setThemeInput(firstTheme);
         mmpo.setMessageInput(firstMessageText);
-
-
         mmpo.uploadFileInput(file.getPath());
         mmpo.getCounterMessageText();
         mmpo.clickSendButton();
