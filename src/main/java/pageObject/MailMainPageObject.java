@@ -37,7 +37,7 @@ public class MailMainPageObject extends Base {
     @FindBy(xpath = ".//span[contains(@class, 'ph-notify svelte-syffyg')]")
     WebElement counterMessageText;
 
-    @FindBy(xpath = ".//span[@class = 'button2 button2_base button2_primary button2_hover-support js-shortcut']")
+    @FindBy(xpath = ".//button[@data-test-id = 'send']")
     WebElement sendButton;
 
     @FindBy(xpath = ".//span[@class = 'button2__wrapper button2__wrapper_centered' and @tabindex = '1000']")
